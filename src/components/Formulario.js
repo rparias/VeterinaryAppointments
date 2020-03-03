@@ -20,10 +20,19 @@ function Formulario() {
   //extraigo los fields del state
   const { mascota, propietario, fecha, hora, sintomas } = cita;
 
+  const submitCita = event => {
+    event.preventDefault();
+
+    //TODO: validate form
+    //TODO: assign ID
+    //TODO: create cita
+    //TODO: restart form
+  };
+
   return (
     <div>
       <h2>Crear cita</h2>
-      <form>
+      <form onSubmit={submitCita}>
         <label htmlFor="mascota">Nombre de la Mascota</label>
         <input
           type="text"

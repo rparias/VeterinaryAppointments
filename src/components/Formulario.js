@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 function Formulario() {
+  //cita es el state actual, actualizarCita es para actualizar el state actual
   const [cita, actualizarCita] = useState({
     mascota: '',
     propietario: '',
@@ -9,9 +10,15 @@ function Formulario() {
     sintomas: ''
   });
 
-  const handleChange = () => {
-    console.log('escribiendo...');
+  const handleChange = event => {
+    actualizarCita({
+      ...cita,
+      [event.target.name]: event.target.value
+    });
   };
+
+  //extraigo los fields del state
+  const { mascota, propietario, fecha, hora, sintomas } = cita;
 
   return (
     <div>
@@ -25,6 +32,7 @@ function Formulario() {
           className="u-full-width"
           placeholder="Nombre Mascota"
           onChange={handleChange}
+          value={mascota}
         />
         <label htmlFor="propietario">Nombre del Dueño</label>
         <input
@@ -34,6 +42,7 @@ function Formulario() {
           className="u-full-width"
           placeholder="Nombre Propietario"
           onChange={handleChange}
+          value={propietario}
         />
         <label>Fecha</label>
         <input
@@ -41,6 +50,7 @@ function Formulario() {
           name="fecha"
           className="u-full-width"
           onChange={handleChange}
+          value={fecha}
         />
         <label>Hora</label>
         <input
@@ -48,6 +58,7 @@ function Formulario() {
           name="hora"
           className="u-full-width"
           onChange={handleChange}
+          value={hora}
         />
         <label htmlFor="sintomas">Síntomas</label>
         <textarea
@@ -55,6 +66,7 @@ function Formulario() {
           id="sintomas"
           className="u-full-width"
           onChange={handleChange}
+          value={sintomas}
         ></textarea>
         <button type="submit" className="u-full-width button-primary">
           Agregar Cita

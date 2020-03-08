@@ -46,6 +46,13 @@ function Formulario({ createCita }) {
     createCita(cita);
 
     //TODO: restart form
+    actualizarCita({
+      mascota: '',
+      propietario: '',
+      fecha: '',
+      hora: '',
+      sintomas: ''
+    });
   };
 
   return (

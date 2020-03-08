@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Formulario from './components/Formulario';
+import Cita from './components/Cita';
 
 function App() {
   //Array de Citas
@@ -18,7 +19,12 @@ function App() {
             {/* Paso la funcion createCita del padre al hijo mediante props */}
             <Formulario createCita={createCita} />
           </div>
-          <div className="one-half column">2</div>
+          <div className="one-half column">
+            <h2>Administra tus citas</h2>
+            {citas.map(cita => (
+              <Cita key={cita.id} cita={cita} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

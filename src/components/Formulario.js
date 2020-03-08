@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 function Formulario() {
   //cita es el state actual, actualizarCita es para actualizar el state actual
@@ -9,6 +10,8 @@ function Formulario() {
     hora: '',
     sintomas: ''
   });
+
+  const [error, actualizarError] = useState(false);
 
   const handleChange = event => {
     actualizarCita({
@@ -24,7 +27,21 @@ function Formulario() {
     event.preventDefault();
 
     //TODO: validate form
-    //TODO: assign ID
+    if (
+      mascota.trim() === '' ||
+      propietario.trim() === '' ||
+      fecha.trim() === '' ||
+      hora.trim() === '' ||
+      sintomas.trim() === ''
+    ) {
+      actualizarError(true);
+      return;
+    }
+    actualizarError(false);
+
+    //TODO: create and assign ID
+    cita.id = uuidv4();
+    console.log(cita);
     //TODO: create cita
     //TODO: restart form
   };
@@ -32,6 +49,9 @@ function Formulario() {
   return (
     <div>
       <h2>Crear cita</h2>
+      {error ? (
+        <p className="alerta-error">Todos los campos son obligatorios</p>
+      ) : null}
       <form onSubmit={submitCita}>
         <label htmlFor="mascota">Nombre de la Mascota</label>
         <input

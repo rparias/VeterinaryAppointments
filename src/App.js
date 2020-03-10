@@ -10,6 +10,12 @@ function App() {
     saveCitas([...citas, cita]);
   };
 
+  const deleteCita = id => {
+    //creo un nuevo arreglo pero excluyendo al actual con el filter y reemplazo el state
+    const nuevasCitas = citas.filter(cita => cita.id !== id);
+    saveCitas(nuevasCitas);
+  };
+
   return (
     <div>
       <h1>Administrador de Pacientes</h1>
@@ -22,7 +28,7 @@ function App() {
           <div className="one-half column">
             <h2>Administra tus citas</h2>
             {citas.map(cita => (
-              <Cita key={cita.id} cita={cita} />
+              <Cita key={cita.id} cita={cita} deleteCita={deleteCita} />
             ))}
           </div>
         </div>

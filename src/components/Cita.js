@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Cita({ cita }) {
+function Cita({ cita, deleteCita }) {
   return (
     <div className="cita">
       <p>
@@ -18,6 +18,12 @@ function Cita({ cita }) {
       <p>
         Síntomas: <span>{cita.sintomas}</span>
       </p>
+      <button
+        className="button eliminar u-full-width"
+        onClick={() => deleteCita(cita.id)}
+      >
+        Eliminar &times;
+      </button>
     </div>
   );
 }

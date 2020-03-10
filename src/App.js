@@ -16,6 +16,9 @@ function App() {
     saveCitas(nuevasCitas);
   };
 
+  const titleCitas =
+    citas.length === 0 ? 'No hay citas' : 'Administra tus citas';
+
   return (
     <div>
       <h1>Administrador de Pacientes</h1>
@@ -26,7 +29,7 @@ function App() {
             <Formulario createCita={createCita} />
           </div>
           <div className="one-half column">
-            <h2>Administra tus citas</h2>
+            <h2>{titleCitas}</h2>
             {citas.map(cita => (
               <Cita key={cita.id} cita={cita} deleteCita={deleteCita} />
             ))}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Formulario from './components/Formulario';
 import Cita from './components/Cita';
 
@@ -9,6 +9,12 @@ function App() {
   const createCita = cita => {
     saveCitas([...citas, cita]);
   };
+
+  //useEffect, cuando citas se actualice, este metodo se ejecutara
+  //es similar a componentDidMount + componentDidUpdate en una sola funcion
+  useEffect(() => {
+    console.log('Documento listo o algo paso con las citas');
+  }, [citas]);
 
   const deleteCita = id => {
     //creo un nuevo arreglo pero excluyendo al actual con el filter y reemplazo el state
